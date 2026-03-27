@@ -273,7 +273,7 @@ section { padding: var(--section-pad) 0; position: relative; }
   z-index: 999;
 }
 .nav__mobile.open { display: flex; }
-.nav__mobile a {
+.nav__mobile a:not(.btn) {
   font-family: var(--font-display);
   font-size: 0.75rem;
   letter-spacing: 0.22em;
@@ -281,7 +281,8 @@ section { padding: var(--section-pad) 0; position: relative; }
   color: var(--cream-dim);
   transition: color 0.3s;
 }
-.nav__mobile a:hover { color: var(--gold); }
+.nav__mobile a:not(.btn):hover { color: var(--gold); }
+.nav__mobile .btn { margin-top: 8px; }
 
 /* ---- HERO ---- */
 .hero {
