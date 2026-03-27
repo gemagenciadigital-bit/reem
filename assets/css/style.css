@@ -681,21 +681,217 @@ section { padding: var(--section-pad) 0; position: relative; }
   font-size: 1rem;
 }
 
-/* ---- RESPONSIVE ---- */
+/* ============================================
+   RESPONSIVE — MOBILE FIRST
+   ============================================ */
+
+/* ---- TABLET (≤ 900px) ---- */
 @media (max-width: 900px) {
-  :root { --section-pad: 70px; --nav-h: 70px; }
-  .container { padding: 0 24px; }
+  :root {
+    --section-pad: 64px;
+    --nav-h: 64px;
+  }
+
+  html { font-size: 15px; }
+
+  .container { padding: 0 20px; }
+
+  /* Nav */
   .nav__links, .nav__cta { display: none; }
   .nav__burger { display: flex; }
+  .nav__mobile { padding: 28px 20px; }
+
+  /* Hero */
+  .hero__geometry { width: 55vw; right: -10%; opacity: 0.08; }
+  .hero__content { max-width: 100%; }
+  .hero__actions { flex-wrap: wrap; gap: 12px; }
+
+  /* Cards */
+  .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+  .card { padding: 36px 28px; }
+
+  /* Testimonials */
+  .testimonials-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  /* Footer */
   .footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .footer__brand { grid-column: 1 / -1; }
+
+  /* Stats */
+  .stat { padding: 20px 16px; }
+  .stat__num { font-size: 2.2rem; }
+
+  /* WhatsApp float */
+  .wa-float span { display: none; }
+  .wa-float { padding: 12px; border-radius: 50%; }
 }
+
+/* ---- MOBILE (≤ 600px) ---- */
 @media (max-width: 600px) {
-  :root { --section-pad: 56px; }
-  .hero__geometry { opacity: 0.06; }
-  .hero__actions { flex-direction: column; }
-  .footer__grid { grid-template-columns: 1fr; }
-  .stats-row { gap: 0; }
-  .stat { border-right: none; border-bottom: 1px solid var(--border); }
+  :root {
+    --section-pad: 48px;
+    --nav-h: 60px;
+  }
+
+  html { font-size: 14px; }
+
+  /* Disable custom cursor on touch devices */
+  .cursor-dot, .cursor-ring { display: none; }
+  body { cursor: auto; }
+  button { cursor: pointer; }
+
+  /* Nav */
+  .nav__logo-text { font-size: 0.95rem; letter-spacing: 0.2em; }
+  .nav__logo img { width: 34px; height: 34px; }
+  .nav__mobile { padding: 24px 20px; gap: 20px; }
+
+  /* Typography */
+  h1 { font-size: clamp(2.2rem, 9vw, 3rem); letter-spacing: 0.03em; }
+  h2 { font-size: clamp(1.7rem, 7vw, 2.4rem); letter-spacing: 0.04em; }
+  h3 { font-size: clamp(1.15rem, 5vw, 1.5rem); }
+  p  { font-size: 1rem; line-height: 1.75; }
+
+  .label { font-size: 0.6rem; letter-spacing: 0.2em; }
+
+  /* Buttons */
+  .btn {
+    padding: 12px 22px;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    width: 100%;
+    justify-content: center;
+  }
+  .hero__actions { flex-direction: column; gap: 10px; }
+  .hero__actions .btn { width: 100%; }
+
+  /* Hero */
+  .hero { min-height: 100svh; padding-top: var(--nav-h); }
+  .hero__geometry { display: none; }
+  .hero__content { max-width: 100%; }
+  .hero__sub { font-size: 1rem; margin-bottom: 36px; }
+  .hero__eyebrow { margin-bottom: 20px; }
+  .hero h1 { margin-bottom: 18px; }
+  .hero__scroll { display: none; }
+
+  /* Section header */
+  .section-header { margin-bottom: 40px; }
+  .section-header h2 { margin-bottom: 14px; }
+  .section-header p { font-size: 0.95rem; }
+
+  /* Cards — single column */
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+  .card {
+    padding: 32px 22px;
+  }
+  .card__num { font-size: 2.8rem; bottom: 14px; right: 18px; }
+
+  /* Testimonials — single column */
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .testi-card img { max-height: 260px; }
+
+  /* Stats strip */
+  .stats-row { flex-direction: column; gap: 0; }
+  .stat {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 20px 16px;
+    min-width: unset;
+    width: 100%;
+  }
   .stat:last-child { border-bottom: none; }
+  .stat__num { font-size: 2.4rem; }
+
+  /* Page hero (inner pages) */
+  .page-hero { min-height: 30vh; padding-bottom: 36px; }
+  .page-hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+
+  /* Footer */
+  .footer { padding: 48px 0 24px; }
+  .footer__grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* Accordion */
+  .accordion-header { font-size: 0.78rem; padding: 20px 0; }
+
+  /* WhatsApp float */
+  .wa-float {
+    bottom: 20px;
+    right: 16px;
+    padding: 11px;
+    border-radius: 50%;
+    gap: 0;
+  }
+  .wa-float span { display: none; }
+  .wa-float svg { width: 22px; height: 22px; }
+
+  /* Fix inline-style grids used in HTML pages */
+  /* Sesiones — cards grid */
+  [style*="grid-template-columns:repeat(auto-fit,minmax(280px"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* Formacion — 2 col layout */
+  [style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  /* Metodo 2-col */
+  [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  /* Podcast hero grid */
+  [style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  /* Hide decorative second-column images on mobile */
+  [style*="text-align:center"] > img[style*="max-width:320px"] {
+    max-width: 160px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Prevent horizontal overflow from fixed-width elements */
+  * { max-width: 100%; }
+  img { max-width: 100%; }
+
+  /* Box styles that have fixed widths — make fluid */
+  [style*="max-width:680px"],
+  [style*="max-width:720px"],
+  [style*="max-width:640px"],
+  [style*="max-width:520px"],
+  [style*="max-width:420px"] {
+    max-width: 100% !important;
+  }
+
+  /* Inline flex rows that break on small screens */
+  .hero__eyebrow { gap: 10px; }
+  .hero__eyebrow-line { width: 32px; }
 }
+
+/* ---- VERY SMALL (≤ 380px) ---- */
+@media (max-width: 380px) {
+  :root { --section-pad: 40px; }
+  html { font-size: 13px; }
+  .container { padding: 0 16px; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.65rem; }
+  .btn { padding: 11px 16px; font-size: 0.6rem; }
+  .card { padding: 28px 18px; }
+  .stat__num { font-size: 2rem; }
+  .wa-float { bottom: 14px; right: 12px; padding: 10px; }
+}
+
