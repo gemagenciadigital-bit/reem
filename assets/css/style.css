@@ -826,6 +826,20 @@ section { padding: var(--section-pad) 0; position: relative; }
 }
 .step-body h3 { margin-bottom: 16px; }
 
+/* ---- METODO 2-COL GRID ---- */
+.metodo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+@media (max-width: 800px) {
+  .metodo-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
 /* ============================================
    RESPONSIVE — MOBILE FIRST
    ============================================ */
