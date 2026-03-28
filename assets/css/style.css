@@ -1082,3 +1082,60 @@ section { padding: var(--section-pad) 0; position: relative; }
   .wa-float { bottom: 14px; right: 12px; padding: 10px; }
 }
 
+/* ============================================
+   ENHANCED BUTTON HOVERS
+   ============================================ */
+
+/* Enhanced outline buttons (Reservar Sesión, etc.) */
+.btn:not(.btn-solid):not(.btn-wa) {
+  position: relative;
+  overflow: hidden;
+}
+.btn:not(.btn-solid):not(.btn-wa)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+  z-index: -1;
+}
+.btn:not(.btn-solid):not(.btn-wa):hover {
+  color: var(--bg-deep);
+  box-shadow: 0 8px 32px rgba(200,184,122,0.35);
+  transform: translateY(-2px);
+}
+.btn:not(.btn-solid):not(.btn-wa):hover::before {
+  transform: scaleX(1);
+}
+.btn:not(.btn-solid):not(.btn-wa):hover svg {
+  transform: translateX(4px);
+}
+
+/* Enhanced solid buttons in nav (Reservar Sesión) */
+.btn-solid.nav__cta,
+.nav__cta.btn-solid {
+  box-shadow: 0 4px 16px rgba(200,184,122,0.2);
+  transition: all 0.35s ease;
+}
+.btn-solid.nav__cta:hover,
+.nav__cta.btn-solid:hover {
+  box-shadow: 0 8px 32px rgba(200,184,122,0.45);
+  transform: translateY(-2px);
+  background: var(--gold-light);
+}
+
+/* Enhanced solid buttons with external links */
+.btn-solid[href*="instagram"],
+.btn-solid[href*="spotify"],
+.btn-solid[target="_blank"] {
+  box-shadow: 0 4px 16px rgba(200,184,122,0.15);
+}
+.btn-solid[href*="instagram"]:hover,
+.btn-solid[href*="spotify"]:hover,
+.btn-solid[target="_blank"]:hover {
+  box-shadow: 0 8px 32px rgba(200,184,122,0.35);
+  transform: translateY(-2px);
+}
+
